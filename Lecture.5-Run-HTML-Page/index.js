@@ -14,16 +14,14 @@ const server = http.createServer((req, res) => {
         case '/con':
             fileName = './contact.html';
             break;
-        default:
-            fileName = null; // File not found for unknown routes
+        
     }
     fs.readFile(fileName, (err, pagename) => {
         if (err) {
             console.log(`File is Not Found !`);
-            res.end();
             return false;
         }
-        res.end(pagename)
+        res.end(pagename) 
     })
 })
 server.listen(port, (err) => {
