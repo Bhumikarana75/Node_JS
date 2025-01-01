@@ -8,30 +8,51 @@
 </head>
 
 <body>
-
-    <div align="center">
-
-        <h1>Add User</h1>
-        
-        <form action="/add" method="POST">
-            <table border="1">
-                <tr>
-                    <td>Name :- </td>
-                    <td><input type="text" id="name"></td>
-                </tr>
-                <tr>
-                    <td>Phone :- </td>
-                    <td><input type="text" id="phone"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="button" value="submit"></td>
-                </tr>
-            </table>
-        </form>
-
-        <a href="/">View</a>
-
+    <div class="container">
+        <header class="header">
+            <h1> Add User</h1>
+        </header>
+        <section class="form-section">
+            <form action="/adduser" method="post" class="user-form">
+                <div class="form-group">
+                    <label for="username">Name:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter name" required>
+                </div>
+                <div class="form-group">
+                    <label for="userphone">Phone:</label>
+                    <input type="text" id="userphone" name="userphone" placeholder="Enter phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="useremail">Email:</label>
+                    <input type="email" id="useremail" name="useremail" placeholder="Enter email" required>
+                </div>
+                <div class="form-group">
+                    <label for="userpassword">Password:</label>
+                    <input type="password" id="userpassword" name="userpassword" placeholder="Enter a password"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="usertask">Task:</label>
+                    <input type="text" id="usertask" name="usertask" placeholder="Enter task" required>
+                </div>
+                <div class="form-group">
+                    <label for="userstatus">Status:</label>
+                    <select id="userstatus" name="userstatus" required>
+                        <option value="pending">Pending</option>
+                        <option value="ongoing">Ongoing</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="userdeadline">Deadline:</label>
+                    <input type="datetime-local" id="userdeadline" name="userdeadline" required>
+                </div>
+                <div class="form-buttons">
+                    <input type="submit" class="btn btn-submit" value="Add User">
+                    <a href="/" class="btn btn-cancel">View Users</a>
+                </div>
+            </form>
+        </section>
     </div>
 
 </body>
