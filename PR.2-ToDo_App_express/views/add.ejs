@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add User</title>
 </head>
+
 <body>
-    
-    <h1>Add User</h1>
-    <form>
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="phone" placeholder="Phone" required>
-        <button type="submit">Add User</button>
-    </form>
+
+    <div align="center">
+
+        <h1>Add User</h1>
+        
+        <form action="/add" method="POST">
+            <table border="1">
+                <tr>
+                    <td>Name :- </td>
+                    <td><input type="text" id="name"></td>
+                </tr>
+                <tr>
+                    <td>Phone :- </td>
+                    <td><input type="text" id="phone"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="button" value="submit"></td>
+                </tr>
+            </table>
+        </form>
+
+        <a href="/">View</a>
+
+    </div>
 
 </body>
+
 </html>
