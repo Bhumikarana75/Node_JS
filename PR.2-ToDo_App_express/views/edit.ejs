@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User_Info</title>
+    <link rel="stylesheet" href="css/edit.ejs">
 </head>
 <body>
 
@@ -16,35 +17,23 @@
                 <input type="hidden" name="editId" value="<%= singleData.id %>">
                 <div class="form-group">
                     <label for="username">Name:</label>
-                    <input type="text" id="username" name="username" value="<%= singleData.name %>" required>
-                </div>
-                <div class="form-group">
-                    <label for="userphone">Phone:</label>
-                    <input type="text" id="userphone" name="userphone" value="<%= singleData.phone %>" required>
-                </div>
-                <div class="form-group">
-                    <label for="useremail">Email:</label>
-                    <input type="email" id="useremail" name="useremail" value="<%= singleData.email %>" required>
-                </div>
-                <div class="form-group">
-                    <label for="userpassword">Password:</label>
-                    <input type="text" id="userpassword" name="userpassword" value="<%= singleData.password %>" required>
+                    <input type="text" id="username" name="username" value="<%= singleData.username %>" required>
                 </div>
                 <div class="form-group">
                     <label for="usertask">Task:</label>
-                    <input type="text" id="usertask" name="usertask" value="<%= singleData.task %>" required>
+                    <input type="text" id="usertask" name="usertask" value="<%= singleData.usertask %>" required>
                 </div>
                 <div class="form-group">
                     <label for="userstatus">Status:</label>
                     <select id="userstatus" name="userstatus" required>
-                        <option value="pending" <%= singleData.status === 'pending' ? 'selected' : '' %>>Pending</option>
-                        <option value="ongoing" <%= singleData.status === 'ongoing' ? 'selected' : '' %>>Ongoing</option>
-                        <option value="completed" <%= singleData.status === 'completed' ? 'selected' : '' %>>Completed</option>
+                        <option value="pending" <%= singleData.userstatus === 'pending' ? 'selected' : '' %>>Pending</option>
+                        <option value="ongoing" <%= singleData.userstatus === 'ongoing' ? 'selected' : '' %>>Ongoing</option>
+                        <option value="completed" <%= singleData.userstatus === 'completed' ? 'selected' : '' %>>Completed</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="userdeadline">Deadline:</label>
-                    <input type="datetime-local" id="userdeadline" name="userdeadline" value="<%= singleData.deadline %>" required>
+                    <input type="datetime-local" id="userdeadline" name="userdeadline" value="<%= singleData.userdeadline %>" required>
                 </div>
                 <div class="form-buttons">
                     <input type="submit" class="btn btn-submit" value="Update User">

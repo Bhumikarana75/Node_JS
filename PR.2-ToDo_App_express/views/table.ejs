@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/table.css">
 </head>
 
 <body>
@@ -19,8 +20,6 @@
                     <tr>
                         <th>SRNO</th>
                         <th>Name</th>
-                        <th>Phone</th>
-                        <th>Email</th>
                         <th>Task</th>
                         <th>Status</th>
                         <th>Deadline</th>
@@ -31,29 +30,23 @@
                     <% record.map((val, i)=> { %>
                         <tr>
                             <td>
-                                <%= ++i %>
+                                <%= i + 1 %>
+                            </td> <!-- Increment index by 1 -->
+                            <td>
+                                <%= val.username %>
                             </td>
                             <td>
-                                <%= val.name %>
+                                <%= val.usertask %>
                             </td>
                             <td>
-                                <%= val.phone %>
+                                <%= val.userstatus %>
                             </td>
                             <td>
-                                <%= val.email %>
+                                <%= val.userdeadline %>
                             </td>
                             <td>
-                                <%= val.task %>
-                            </td>
-                            <td>
-                                <%= val.status %>
-                            </td>
-                            <td>
-                                <%= val.deadline %>
-                            </td>
-                            <td>
-                                <a class="btn btn-delete" href="/deleteUser?delId=<%= val.id%>">Delete</a>
-                                <a class="btn btn-edit" href="/editUser?editId=<%= val.id%>">Edit</a>
+                                <a class="btn btn-delete" href="/deleteUser?delId=<%= val.id %>">Delete</a>
+                                <a class="btn btn-edit" href="/editUser?editId=<%= val.id %>">Edit</a>
                             </td>
                         </tr>
                         <% }) %>
