@@ -44,7 +44,7 @@ body {
 }
 
 .header h1 {
-    background-image: url('https://media.istockphoto.com/id/1440574824/vector/abstract-light-blue-graphic-design-presentation-background-web-template.jpg?s=612x612&w=0&k=20&c=l03G-gmFxWvlhn4uIaQnKlDp2KQ-7xqQ4KHp_LPSyEI=');
+    /* background-image: url('https://media.istockphoto.com/id/1440574824/vector/abstract-light-blue-graphic-design-presentation-background-web-template.jpg?s=612x612&w=0&k=20&c=l03G-gmFxWvlhn4uIaQnKlDp2KQ-7xqQ4KHp_LPSyEI='); */
     font-size: 35px;
     margin: 0;
     color: grey;
@@ -135,4 +135,52 @@ tbody td {
 /* Footer Section */
 footer {
     margin-top: 20px;
+}
+
+.form-group input {
+    width: 65%;
+    /* Flexible width for input */
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+    /* Light cream background for inputs */
+    color: black;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: skyblue;
+}
+select {
+    width: 65%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+}
+
+select:focus {
+    outline: none;
+    border-color: grey;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: grey;
+    margin-right: 15px;
+    text-align: right;
+    width: 30%;
+    /* Fixed width for label */
 }
