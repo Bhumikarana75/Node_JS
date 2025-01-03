@@ -11,51 +11,97 @@
 <body>
 
     <div class="container">
-        <header class="header">
-            <h1>View User Data</h1>
-        </header>
-        <section class="table-section">
-            <table>
-                <thead>
-                    <tr>
-                        <th>SRNO</th>
-                        <th>Name</th>
-                        <th>Task</th>
-                        <th>Status</th>
-                        <th>Deadline</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% record.map((val, i)=> { %>
+        <div class="addUser">
+            <header class="header">
+                <h1> Add User</h1>
+            </header>
+            <section class="form">
+                <form action="/adduser" method="post" class="user-form">
+                    <table>
                         <tr>
                             <td>
-                                <%= i + 1 %>
-                            </td> <!-- Increment index by 1 -->
-                            <td>
-                                <%= val.username %>
+                                <div class="form-group">
+                                    <label for="username">Name:</label>
+                                    <input type="text" id="username" name="username" placeholder="Enter name" required>
+                                </div>
                             </td>
                             <td>
-                                <%= val.usertask %>
+                                <div class="form-group">
+                                    <label for="usertask">Task:</label>
+                                    <input type="text" id="usertask" name="usertask" placeholder="Enter task" required>
+                                </div>
                             </td>
                             <td>
-                                <%= val.userstatus %>
+                                <div class="form-group">
+                                    <label for="userstatus">Status:</label>
+                                    <select id="userstatus" name="userstatus" required>
+                                        <option value="pending">Pending</option>
+                                        <option value="ongoing">Ongoing</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
+                                </div>
                             </td>
                             <td>
-                                <%= val.userdeadline %>
+                                <div class="form-group">
+                                    <label for="userdeadline">Deadline:</label>
+                                    <input type="datetime-local" id="userdeadline" name="userdeadline" required>
+                                </div>
                             </td>
                             <td>
-                                <a class="btn btn-delete" href="/deleteUser?delId=<%= val.id %>">Delete</a>
-                                <a class="btn btn-edit" href="/editUser?editId=<%= val.id %>">Edit</a>
+                                <div class="form-buttons">
+                                    <input type="submit" class="btn btn-submit" value="Add User">
+                                </div>
                             </td>
                         </tr>
-                        <% }) %>
-                </tbody>
-            </table>
-        </section>
-        <footer>
-            <a href="/add" class="btn btn-add">+ &nbsp; Add New User</a>
-        </footer>
+                    </table>
+                </form>
+            </section>
+        </div>
+
+        <div class="userData">
+            <header class="header">
+                <h1>View User Data</h1>
+            </header>
+            <section class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SRNO</th>
+                            <th>Name</th>
+                            <th>Task</th>
+                            <th>Status</th>
+                            <th>Deadline</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% record.map((val, i)=> { %>
+                            <tr>
+                                <td>
+                                    <%= i + 1 %>
+                                </td> <!-- Increment index by 1 -->
+                                <td>
+                                    <%= val.username %>
+                                </td>
+                                <td>
+                                    <%= val.usertask %>
+                                </td>
+                                <td>
+                                    <%= val.userstatus %>
+                                </td>
+                                <td>
+                                    <%= val.userdeadline %>
+                                </td>
+                                <td>
+                                    <a class="btn deleteBtn" href="/deleteUser?delId=<%= val.id %>">Delete</a>
+                                    <a class="btn editBtn" href="/editUser?editId=<%= val.id %>">Edit</a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </section>
+        </div>
     </div>
 
 </body>
