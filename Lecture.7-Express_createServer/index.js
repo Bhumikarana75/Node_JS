@@ -7,11 +7,11 @@ app.get('/', (req, res) => {
     console.log("Home route accessed");
     return res.render('home');
 });
-app.get('/p', (req, res) => {
+app.get('/product', (req, res) => {
     console.log("Product route accessed");
     return res.render('product');
 });
-app.get('/c', (req, res) => {
+app.get('/contact', (req, res) => {
     console.log("Contact route accessed");
     return res.render('contact');
 });
@@ -21,5 +21,5 @@ app.listen(port, (err) => {
         console.log(err);
         return false;
     }
-    console.log(`Server is running on port:- ${port}`);
+    console.log(`Server is running on http://localhost:${port}`);
 });
