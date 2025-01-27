@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/mongo_Edit');
+mongoose.connect('mongodb://localhost/bookStore_Crud');
 
 const db = mongoose.connection;
 
