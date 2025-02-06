@@ -10,7 +10,7 @@
 <body>
     <div align="center">
         <h1>Edit User</h1>
-        <form action="/updateUser" method="post">
+        <form action="/updateUser" method="post" enctype="multipart/form-data">
             <input type="hidden" name="editId" value="<%= single.id %>">
             <table border="1">
                 <tr>
@@ -56,6 +56,13 @@
                             ? "checked" : "" %>> read
                         <input type="checkbox" name="hobby" value="cook" <%=single.userHobby.includes("cook")
                             ? "checked" : "" %>> cook
+                    </td>
+                </tr>
+                <tr>
+                    <td>File:</td>
+                    <td>
+                        <input type="file" name="img">
+                        <img src="<%= single.userImage %>" width="100" alt="">
                     </td>
                 </tr>
                 <tr>

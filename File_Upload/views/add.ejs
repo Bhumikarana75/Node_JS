@@ -11,7 +11,7 @@
 
     <div align="center">
         <h1>Add Page</h1>
-        <form action="/addUser" method="POST">
+        <form action="/addUser" method="POST" enctype="multipart/form-data">
             <table border="1">
                 <tr>
                     <td>Name :- </td>
@@ -52,6 +52,12 @@
                         <input type="checkbox" name="hobby" value="dance">Dance
                         <input type="checkbox" name="hobby" value="Read">Read
                         <input type="checkbox" name="hobby" value="cook">Cook
+                    </td>
+                </tr>
+                <tr>
+                    <td>Image :-</td>
+                    <td>
+                        <input type="file" name="img" id="">
                     </td>
                 </tr>
                 <tr>

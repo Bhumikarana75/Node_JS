@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
     userHobby:{
         type: Array,
         required: true
+    },
+    userImage:{
+        type:String,
+        required: true
     }
 });
 
