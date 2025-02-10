@@ -6,9 +6,9 @@ const app = express();
 
 app.set('view engine','ejs');
 
-const path = require('path');
-
 const db = require('./config/db');
+
+const path = require('path');
 
 app.use(express.static('public')); 
 
