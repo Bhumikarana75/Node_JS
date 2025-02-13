@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div align="center">
+        <h1>View Crud</h1>
+        <form action="">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>Password</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <% viewRec.map((val,index) => { %>
+                                <tr>
+                                    <td><%= val?.id %></td>
+                                    <td><%= val?.userName %></td>
+                                    <td><%= val?.userEmail %></td>
+                                    <td><%= val?.userPassword %></td>
+                                </tr>
+                            <% }) %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <a href="/crud">add</a>
+    </div>
+
+</body>
+
+</html>
