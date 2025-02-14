@@ -6,8 +6,9 @@ const routes = express.Router();
 
 const multer = require('multer');
 
-routes.get('/', loginPage);
+
 routes.get('/register', registerPage);
+routes.get('/', loginPage);
 routes.post('/loginuser', loginUser)
 routes.post('/registeruser', registerUser);
 routes.get('/dashboard', checkUserLogin, dashboardPage);
@@ -23,17 +24,16 @@ const st = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         cb(null, `${file.fieldname}-${Math.floor(Math.random() * 1000000)}`);
+        // cb(null, `${Date.now()}-${file.originalname}`);
     }
-});
-
+})
 const fileUpload = multer({ storage: st }).single('image');
 
 routes.post('/addblogdata', fileUpload, addBlogData);
 
 routes.get('/deletedata', deleteBlogData);
-
 routes.get('/editblogdata', editBlogData);
 
-routes.post('/updateblogdata', fileUpload, updateBlogData);
+routes.post('/updateblogdata', fileUpload, updateBlogData)
 
 module.exports = routes;

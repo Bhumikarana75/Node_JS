@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-     bootstrap link  
+    <!-- bootstrap link   -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    fonts style 
+    <!-- fonts style  -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
         .a {
             text-decoration: none;
@@ -23,39 +25,58 @@
         }
 
         /* Navbar Styling */
-        .navbar-brand {
-            font-size: 36px;
+        .nav-link {
+            font-size: 16px;
+            color: black !important;
+            margin-right: 15px;
+            transition: 0.5s;
+        }
+
+        .nav-link:hover {
             color: #d14200 !important;
         }
 
-        .nav-link {
-            font-size: 18px;
-            color: black !important;
-            margin-right: 15px;
+        .nav-btn a {
+            background-color: #d14200;
+            color: #f8f9fa;
+            box-shadow: 1px 2px 0.1px 0.1px black;
+            transition: 0.2s;
+        }
+
+        .nav-btn a:hover {
+            box-shadow: 0 0 0 0;
+            background-color: #d14200;
         }
 
         /* Blog Section */
-        .blog-header {
-            text-align: center;
-            padding: 50px 20px;
-            background: #f8f9fa;
-            margin-bottom: 40px;
-        }
 
         .blog-card {
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             transition: 0.3s ease-in-out;
+            margin-top: 20px;
+        }
+        .blog-card img{
+            
+            height: 400px; 
+            width:100%;
+            object-fit: cover;
+        }
+        .first-card {
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .blog-card:hover {
+        .blog-card img:hover {
             transform: scale(1.03);
+            object-fit: cover;
+            transition: 1s;
         }
 
-        .blog-card img {
-            width: 100%;
-            height: 200px;
+        .blog-card img:nth-child(2) {
+            width: 100% !important;
+            height: 100% !important;
             object-fit: cover;
         }
 
@@ -73,6 +94,60 @@
             font-size: 16px;
             color: #555;
         }
+
+        .blog-card-body:first-child .blog-card-text{
+            font-size: 16px;
+            position: relative;
+        }
+        .blog-card-body a:hover{
+            color: #d14200;
+            transition: 0.4s;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }   
+        .blog-card-text:hover{
+            
+            color: #d14200;
+            transition: 0.4s;
+        }
+        .blog-card-body a.btn{
+            border: 1px solid black;
+            border-radius: 0;
+            width: 130px;
+            position: absolute;
+            right: 16%;
+        }
+
+        /* footer */
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            color: #ccc;
+        }
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+            color: #ccc;
+        }
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-links a{
+            color: #fff;
+            transition: 0.3s;
+        }
+        .footer-links a svg:hover{
+            color: #d14200;
+        }
     </style>
 
 
@@ -82,62 +157,71 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#">Inner Pieces</a>
+            <a class="navbar-brand" href="#">
+                <h1 style="font-size: 46px; margin: 0; color: #d14200;">Inner Pieces</h1>
+                <span style="font-size: 14px; display: block; top: 50px;">Thoughts on Lifestyle & Mental Health</span>
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="/dashboard">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Resources</a>
+                        <a class="nav-link active" href="/blog">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
             </div>
+            <div class="nav-btn">
+                <a class="btn me-2" type="button" href="/logoutuser">Logout</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Blog Header -->
-
-    <div class="blog-header">
-        <h1>Welcome to Our Blog</h1>
-        <p>Insights, thoughts, and stories on mental health & lifestyle.</p>
-    </div>
-
     <!-- Blog Content -->
 
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
 
             <!-- Featured Blog Post -->
-            <div class="col-md-12 mb-4">
-                <div class="blog-card">
-                    <img src="" alt="Featured Post">
-                    <div class="blog-card-body">
-                        <h2 class="blog-card-title">Finding Inner Peace in a Busy World</h2>
-                        <p class="blog-card-text">Discover simple ways to incorporate mindfulness into your daily
-                            routine.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+            <div class="col-md-12 d-flex">
+                <div class="col-md-8 mb-4">
+                    <div class="first-card" style="margin-right: 24px; width: 700px; height: 700px; object-fit: cover;">
+                        <img src="https://static.wixstatic.com/media/84770f_231a1c5c6e1d48e5a425809e93319bdc~mv2.jpg/v1/fill/w_950,h_1099,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/84770f_231a1c5c6e1d48e5a425809e93319bdc~mv2.jpg"
+                            alt="Featured Post">
+
                     </div>
                 </div>
-            </div> 
+                <div class="col-md-4">
+                    <div class="blog-first-title" style="display: block;">
+                        <h2 class="blog-card-title1 text-center mb-3">My Thoughts</h2>
+                    </div>
+                    <div class="first-card" width="200px" height="200px">
+                        <img src="https://static.wixstatic.com/media/f5af78_81b23a68d5ac4cb699ddd6f7fbd93035~mv2_d_3000_2246_s_2.jpg/v1/fill/w_440,h_440,fp_0.50_0.50,q_90,enc_auto/f5af78_81b23a68d5ac4cb699ddd6f7fbd93035~mv2_d_3000_2246_s_2.jpg"
+                            alt="Featured Post" height="100%" width="100%">
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title mx-3 my-2" style="font-family: Cormorant, serif; font-weight: 600; font-size: 30px;">Detoxing my social media feed</h3>
+                        <p class="blog-card-text mx-3">Create a blog post subtitle that summarizes your post in a few short,
+                            punchy sentences and entices your audience to continue reading....</p>
+                        <a href="#" class="btn mx-3">Read More</a>
+                    </div>
+                </div>
+            </div>
 
             <!-- Blog Posts Grid  -->
             <div class="col-md-4 mb-4">
                 <div class="blog-card">
-                    <img src="https://source.unsplash.com/400x250/?relaxation,meditation" alt="Blog Post 1">
+                    <img src="https://static.wixstatic.com/media/84770f_231a1c5c6e1d48e5a425809e93319bdc~mv2.jpg/v1/fill/w_950,h_1099,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/84770f_231a1c5c6e1d48e5a425809e93319bdc~mv2.jpg"
+                        alt="Blog Post 1" >
                     <div class="blog-card-body">
                         <h3 class="blog-card-title">Meditation for Beginners</h3>
                         <p class="blog-card-text">A step-by-step guide to starting your meditation journey.</p>
@@ -148,7 +232,8 @@
 
             <div class="col-md-4 mb-4">
                 <div class="blog-card">
-                    <img src="https://source.unsplash.com/400x250/?mentalhealth,books" alt="Blog Post 2">
+                    <img src="https://static.wixstatic.com/media/84770f_231a1c5c6e1d48e5a425809e93319bdc~mv2.jpg/v1/fill/w_950,h_1099,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/84770f_231a1c5c6e1d48e5a425809e93319bdc~mv2.jpg"
+                        alt="Blog Post 2">
                     <div class="blog-card-body">
                         <h3 class="blog-card-title">Books That Changed My Perspective</h3>
                         <p class="blog-card-text">Here are some books that had a major impact on my mental well-being.
@@ -160,7 +245,8 @@
 
             <div class="col-md-4 mb-4">
                 <div class="blog-card">
-                    <img src="https://source.unsplash.com/400x250/?therapy,selfcare" alt="Blog Post 3">
+                    <img src="https://static.wixstatic.com/media/84770f_231a1c5c6e1d48e5a425809e93319bdc~mv2.jpg/v1/fill/w_950,h_1099,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/84770f_231a1c5c6e1d48e5a425809e93319bdc~mv2.jpg"
+                        alt="Blog Post 3">
                     <div class="blog-card-body">
                         <h3 class="blog-card-title">The Power of Self-Care</h3>
                         <p class="blog-card-text">Why self-care isn’t selfish and how you can make time for yourself.
@@ -174,76 +260,49 @@
     </div>
 
     <!-- Footer  -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>&copy; 2025 Inner Pieces | All rights reserved.</p>
+    <footer class="footer bg-dark text-white text-center py-3 mt-5">
+            <div class="social-icons">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="#000" d="M10 0C-2.399.363-3.663 17.76 8.43 20v-7.03H5.876V10.06H8.43V7.845c.072-4.058 3.333-4.207 6.047-3.718v2.476H13.21c-1.249 0-1.639.775-1.639 1.57v1.888h2.788l-.445 2.909H11.57V20C23.666 17.759 22.396.362 10 0"></path></svg>
+                </a>
+
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="20" fill="none" viewBox="0 0 28 20"><path fill="#000" d="M11.83.005c-2.96.056-4.594.12-6.14.237C3.805.385 3.093.511 2.475.81c-.357.173-.62.357-.92.648C.825 2.173.53 2.913.321 4.569l-.085.67a45 45 0 0 0-.162 2.222c-.099 2.083-.099 2.994 0 5.083.03.662.121 1.906.162 2.221l.085.67c.21 1.657.503 2.397 1.234 3.112.714.696 1.393.95 3.008 1.118C6.72 19.89 9.763 20 14 20c3.646 0 6.203-.073 8.31-.235 1.899-.148 2.597-.27 3.215-.57.357-.173.62-.357.92-.648.73-.715 1.025-1.455 1.234-3.111l.085-.67c.04-.316.132-1.56.162-2.222.099-2.089.099-3 0-5.083a45 45 0 0 0-.162-2.221l-.085-.67c-.21-1.657-.503-2.397-1.234-3.112C25.956.98 25.43.695 24.736.536c-.983-.23-3.269-.397-6.684-.492A295 295 0 0 0 11.83.005m.192 6.266c1.055.611 2.063 1.195 5.324 3.08.594.341 1.083.635 1.083.651 0 .014-.789.484-1.753 1.04a2861 2861 0 0 0-5.511 3.187c-.014.006-.022-1.897-.022-4.226 0-2.33.008-4.232.022-4.227.01.003.395.226.857.495"></path></svg>
+                </a>
+
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="#000" d="M5.858.07c-1.064.05-1.79.22-2.425.47-.658.256-1.215.6-1.77 1.156a4.9 4.9 0 0 0-1.15 1.772C.267 4.105.1 4.832.053 5.897s-.057 1.407-.052 4.122c.005 2.716.017 3.056.069 4.123.05 1.064.22 1.79.47 2.426.256.657.6 1.214 1.156 1.769a4.9 4.9 0 0 0 1.774 1.15c.636.245 1.363.413 2.428.46 1.064.046 1.407.057 4.122.052s3.056-.017 4.123-.068c1.067-.05 1.79-.221 2.425-.47a4.9 4.9 0 0 0 1.769-1.156 4.9 4.9 0 0 0 1.15-1.774c.246-.636.413-1.363.46-2.427.046-1.067.057-1.408.052-4.123s-.018-3.056-.068-4.122c-.05-1.067-.22-1.79-.47-2.427a4.9 4.9 0 0 0-1.156-1.769 4.9 4.9 0 0 0-1.773-1.15C15.895.269 15.168.1 14.104.054 13.039.009 12.697-.003 9.98.002S6.925.018 5.858.07m.117 18.078c-.975-.043-1.504-.205-1.857-.34-.467-.18-.8-.398-1.152-.746a3.1 3.1 0 0 1-.75-1.149c-.137-.352-.302-.881-.347-1.856-.05-1.054-.06-1.37-.066-4.04s.004-2.986.05-4.04c.042-.974.205-1.504.34-1.857.18-.468.397-.8.746-1.151a3.1 3.1 0 0 1 1.15-.75c.351-.138.88-.302 1.855-.348 1.054-.05 1.37-.06 4.04-.066s2.986.004 4.041.05c.974.043 1.505.204 1.857.34.467.18.8.397 1.151.746.352.35.568.682.75 1.15.138.35.302.88.348 1.855.05 1.054.062 1.37.066 4.04s-.004 2.986-.05 4.04c-.043.975-.205 1.504-.34 1.857a3.1 3.1 0 0 1-.747 1.152c-.349.35-.681.567-1.148.75-.352.137-.882.301-1.855.347-1.055.05-1.371.06-4.042.066s-2.985-.005-4.04-.05m8.153-13.493a1.2 1.2 0 1 0 2.4-.003 1.2 1.2 0 0 0-2.4.003M4.865 10.01a5.134 5.134 0 1 0 10.27-.02 5.134 5.134 0 0 0-10.27.02m1.802-.004a3.334 3.334 0 1 1 6.667-.013 3.334 3.334 0 0 1-6.667.013"></path></svg>
+                </a>
+
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="#000" d="M18.522.003C15.446-.006 4.1.009 1.478.003.662.003 0 .645 0 1.435v17.133C0 19.358.662 20 1.478 20h17.044c.816 0 1.478-.641 1.478-1.432V1.435c0-.79-.662-1.432-1.478-1.432M6.078 16.738H3.085V7.735h2.993v9.003M4.582 6.506c-1.008.01-1.675-.684-1.673-1.555-.003-2.06 3.358-2.084 3.366 0 0 .864-.65 1.555-1.693 1.555M16.87 16.738h-2.993v-4.816c0-1.21-.433-2.036-1.516-2.036-1.111.04-1.663.901-1.634 1.825v5.027H7.735s.039-8.158 0-9.002h2.992l-.02 1.305c.394-.615 1.103-1.517 2.718-1.517 1.968 0 3.445 1.287 3.445 4.052z"></path></svg>
+                </a>
+
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" fill="none" viewBox="0 0 19 20"><path fill="#000" d="m.044.063 7.352 11.022.023.034-3.667 4.39-3.71 4.44L0 20h1.677l3.241-3.881c1.783-2.134 3.242-3.88 3.245-3.88.002 0 1.169 1.745 2.592 3.88L13.344 20H19l-.023-.035-3.84-5.758c-2.1-3.148-3.82-5.73-3.82-5.737a883 883 0 0 1 3.527-4.234C16.783 1.914 18.372.01 18.372.006A28 28 0 0 0 17.54 0h-.835L13.64 3.67a1080 1080 0 0 1-3.074 3.673c-.004.001-1.11-1.65-2.457-3.67L5.658 0H0zM5.339 2.01l11.36 16.74c.005.007-.253.01-1.28.01h-1.286l-2.7-3.977L5.512 6.06C3.739 3.447 2.289 1.308 2.289 1.304s.54-.008 1.283-.008h1.281z"></path></svg>
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+                <span>© 2006-2025 Wix.com, Inc</span>
+            </div>
     </footer>
 
-
-    <!--     <header>
-        <div class="container">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <span style="font-family: Libre Baskerville, serif;  font-size: 45px; color: #d14200; margin:0px">Inner
-                            Pieces
-                        </span>
-                        <span>Thoughts on Lifestyle & Mental Health</span>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                            </li>
-                        </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header> -->
-
-     <!-- bootstrap js link  -->
+    <!-- bootstrap js link  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
     <div align="center">
-         <a href="/logoutuser">Logout</a> 
+
     </div>
 </body>
 
 </html>
 
-<!--
-<!DOCTYPE html>
+
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -536,38 +595,11 @@
             </div>
         </div>
        
-        <footer class="footer">
-            <div class="social-icons">
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="#000" d="M10 0C-2.399.363-3.663 17.76 8.43 20v-7.03H5.876V10.06H8.43V7.845c.072-4.058 3.333-4.207 6.047-3.718v2.476H13.21c-1.249 0-1.639.775-1.639 1.57v1.888h2.788l-.445 2.909H11.57V20C23.666 17.759 22.396.362 10 0"></path></svg>
-                </a>
-
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="20" fill="none" viewBox="0 0 28 20"><path fill="#000" d="M11.83.005c-2.96.056-4.594.12-6.14.237C3.805.385 3.093.511 2.475.81c-.357.173-.62.357-.92.648C.825 2.173.53 2.913.321 4.569l-.085.67a45 45 0 0 0-.162 2.222c-.099 2.083-.099 2.994 0 5.083.03.662.121 1.906.162 2.221l.085.67c.21 1.657.503 2.397 1.234 3.112.714.696 1.393.95 3.008 1.118C6.72 19.89 9.763 20 14 20c3.646 0 6.203-.073 8.31-.235 1.899-.148 2.597-.27 3.215-.57.357-.173.62-.357.92-.648.73-.715 1.025-1.455 1.234-3.111l.085-.67c.04-.316.132-1.56.162-2.222.099-2.089.099-3 0-5.083a45 45 0 0 0-.162-2.221l-.085-.67c-.21-1.657-.503-2.397-1.234-3.112C25.956.98 25.43.695 24.736.536c-.983-.23-3.269-.397-6.684-.492A295 295 0 0 0 11.83.005m.192 6.266c1.055.611 2.063 1.195 5.324 3.08.594.341 1.083.635 1.083.651 0 .014-.789.484-1.753 1.04a2861 2861 0 0 0-5.511 3.187c-.014.006-.022-1.897-.022-4.226 0-2.33.008-4.232.022-4.227.01.003.395.226.857.495"></path></svg>
-                </a>
-
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="#000" d="M5.858.07c-1.064.05-1.79.22-2.425.47-.658.256-1.215.6-1.77 1.156a4.9 4.9 0 0 0-1.15 1.772C.267 4.105.1 4.832.053 5.897s-.057 1.407-.052 4.122c.005 2.716.017 3.056.069 4.123.05 1.064.22 1.79.47 2.426.256.657.6 1.214 1.156 1.769a4.9 4.9 0 0 0 1.774 1.15c.636.245 1.363.413 2.428.46 1.064.046 1.407.057 4.122.052s3.056-.017 4.123-.068c1.067-.05 1.79-.221 2.425-.47a4.9 4.9 0 0 0 1.769-1.156 4.9 4.9 0 0 0 1.15-1.774c.246-.636.413-1.363.46-2.427.046-1.067.057-1.408.052-4.123s-.018-3.056-.068-4.122c-.05-1.067-.22-1.79-.47-2.427a4.9 4.9 0 0 0-1.156-1.769 4.9 4.9 0 0 0-1.773-1.15C15.895.269 15.168.1 14.104.054 13.039.009 12.697-.003 9.98.002S6.925.018 5.858.07m.117 18.078c-.975-.043-1.504-.205-1.857-.34-.467-.18-.8-.398-1.152-.746a3.1 3.1 0 0 1-.75-1.149c-.137-.352-.302-.881-.347-1.856-.05-1.054-.06-1.37-.066-4.04s.004-2.986.05-4.04c.042-.974.205-1.504.34-1.857.18-.468.397-.8.746-1.151a3.1 3.1 0 0 1 1.15-.75c.351-.138.88-.302 1.855-.348 1.054-.05 1.37-.06 4.04-.066s2.986.004 4.041.05c.974.043 1.505.204 1.857.34.467.18.8.397 1.151.746.352.35.568.682.75 1.15.138.35.302.88.348 1.855.05 1.054.062 1.37.066 4.04s-.004 2.986-.05 4.04c-.043.975-.205 1.504-.34 1.857a3.1 3.1 0 0 1-.747 1.152c-.349.35-.681.567-1.148.75-.352.137-.882.301-1.855.347-1.055.05-1.371.06-4.042.066s-2.985-.005-4.04-.05m8.153-13.493a1.2 1.2 0 1 0 2.4-.003 1.2 1.2 0 0 0-2.4.003M4.865 10.01a5.134 5.134 0 1 0 10.27-.02 5.134 5.134 0 0 0-10.27.02m1.802-.004a3.334 3.334 0 1 1 6.667-.013 3.334 3.334 0 0 1-6.667.013"></path></svg>
-                </a>
-
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="#000" d="M18.522.003C15.446-.006 4.1.009 1.478.003.662.003 0 .645 0 1.435v17.133C0 19.358.662 20 1.478 20h17.044c.816 0 1.478-.641 1.478-1.432V1.435c0-.79-.662-1.432-1.478-1.432M6.078 16.738H3.085V7.735h2.993v9.003M4.582 6.506c-1.008.01-1.675-.684-1.673-1.555-.003-2.06 3.358-2.084 3.366 0 0 .864-.65 1.555-1.693 1.555M16.87 16.738h-2.993v-4.816c0-1.21-.433-2.036-1.516-2.036-1.111.04-1.663.901-1.634 1.825v5.027H7.735s.039-8.158 0-9.002h2.992l-.02 1.305c.394-.615 1.103-1.517 2.718-1.517 1.968 0 3.445 1.287 3.445 4.052z"></path></svg>
-                </a>
-
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" fill="none" viewBox="0 0 19 20"><path fill="#000" d="m.044.063 7.352 11.022.023.034-3.667 4.39-3.71 4.44L0 20h1.677l3.241-3.881c1.783-2.134 3.242-3.88 3.245-3.88.002 0 1.169 1.745 2.592 3.88L13.344 20H19l-.023-.035-3.84-5.758c-2.1-3.148-3.82-5.73-3.82-5.737a883 883 0 0 1 3.527-4.234C16.783 1.914 18.372.01 18.372.006A28 28 0 0 0 17.54 0h-.835L13.64 3.67a1080 1080 0 0 1-3.074 3.673c-.004.001-1.11-1.65-2.457-3.67L5.658 0H0zM5.339 2.01l11.36 16.74c.005.007-.253.01-1.28.01h-1.286l-2.7-3.977L5.512 6.06C3.739 3.447 2.289 1.308 2.289 1.304s.54-.008 1.283-.008h1.281z"></path></svg>
-                </a>
-            </div>
-            <div class="footer-links">
-                <a href="#">Terms of Use</a>
-                <a href="#">Privacy Policy</a>
-                <span>© 2006-2025 Wix.com, Inc</span>
-            </div>
-        </footer>
+       
 
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
-</html>
+</html> 

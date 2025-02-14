@@ -13,23 +13,23 @@ const loginPage = (req,res) => {
     return res.render('login');
 }
 
-const loginUser = async (req, res) => {
-    try {
+const loginUser = async (req,res) => {
+    try{
         const { email, password } = req.body;
-        const user = await userModel.users.findOne({ email: email });
+        const user = await userModel.users.findOne({ email : email });
 
-        if (!user || user.password != password) {
+        if(!user || user.password != password){
             console.log(`Email Or Password is incorrect`);
             return res.redirect('/');
         }
-        res.cookie('auth', user);
+
+        res.cookie('auth',user);
         return res.redirect('/dashboard');
-    } catch (err) {
+    }catch(err){
         console.log(err);
         return false;
     }
-};
-
+}
 
 const registerUser = async (req,res) => {
     try{
