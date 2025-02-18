@@ -16,67 +16,6 @@
             background-color: #e4e7e7;
         }
 
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            border-bottom: 1px solid #ddd;
-            background-color: #fff;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: black;
-            font-size: 14px;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-
-        .nav a:hover {
-            color: #1665D8;
-        }
-
-        .dropdown {
-            cursor: pointer;
-        }
-
-        .right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .login {
-            text-decoration: none;
-            color: black;
-        }
-
-        .button {
-            background-color: rgb(176, 9, 9);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            background-color: rgb(111, 7, 7);
-        }
-
         .container {
             max-width: 600px;
             margin-top: 50px;
@@ -86,12 +25,6 @@
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-control,
-        .form-control:focus {
-            border-radius: 8px;
-            border: 1px solid #ced4da;
         }
 
         .btn-primary {
@@ -105,67 +38,42 @@
             background-color: #0A4C8F;
         }
     </style>
+
+    <link rel="stylesheet" href="../public/css/style.css">
 </head>
 
 <body>
-    <div>
-        <header class="header">
-            <div class="logo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="75" height="30" fill="none">
-                    <g fill="#000" clip-path="url(#Logo_svg__a)">
-                        <path
-                            d="M75 0h-4.142c-1.15 0-2.224.57-2.87 1.52l-5.54 8.174a.372.372 0 0 1-.615 0l-5.54-8.173A3.46 3.46 0 0 0 53.424 0h-4.143l9.87 14.56-9.815 14.477h4.143c1.149 0 2.223-.569 2.868-1.52l5.486-8.093a.372.372 0 0 1 .616 0l5.485 8.093a3.46 3.46 0 0 0 2.87 1.52h4.142L65.131 14.56zM40.758 2.97v26.067h1.98a2.97 2.97 0 0 0 2.97-2.97V0h-1.98a2.97 2.97 0 0 0-2.97 2.97M37.126 0h-1.762a4.15 4.15 0 0 0-4.051 3.233l-3.942 17.328-3.45-16.175c-.638-2.99-3.706-5.006-6.845-4.139-1.999.552-3.481 2.241-3.914 4.27L9.747 20.54 5.813 3.234A4.16 4.16 0 0 0 1.76 0H0l6.604 29.036h2.502a4.81 4.81 0 0 0 4.706-3.808l4.221-19.81a.54.54 0 0 1 .523-.424c.25 0 .471.178.523.423l4.226 19.812a4.81 4.81 0 0 0 4.706 3.807h2.51z">
-                        </path>
-                    </g>
-                    <defs>
-                        <clipPath id="Logo_svg__a">
-                            <path fill="#fff" d="M0 0h75v29.037H0z"></path>
-                        </clipPath>
-                    </defs>
-                </svg>
-            </div>
-            <nav class="nav">
-                <a href="/dashboard">Home </a>
-                <a href="/viewblogpage">Your Blogs </a>
-                <a href="/addblogpage">Add Your Blogs </a>
-            </nav>
-            <div class="right">
-                <a href="/logoutuser" class="button">Logout</a>
-                <!-- <a class="login" href="#">Log In</a> -->
-                <!-- <a class="button" href="#">Get Started</a> -->
-            </div>
-        </header>
 
-        <div class="container">
-            <h2 class="text-center mb-4">Add Your Blog</h2>
+    <div class="container">
+        <h2 class="text-center mb-4">Add Your Blog</h2>
 
-            <div class="card">
-                <form action="/addblogdata" method="post" enctype="multipart/form-data">
+        <div class="card">
+            <form action="/addblogdata" method="post" enctype="multipart/form-data">
 
-                    <div class="mb-3">
-                        <label class="form-label">Title:</label>
-                        <input type="text" name="title" class="form-control" required>
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label">Title:</label>
+                    <input type="text" name="title" class="form-control" required>
+                </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Description:</label>
-                        <textarea name="description" class="form-control" rows="4" required></textarea>
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label">Description:</label>
+                    <textarea name="description" class="form-control" rows="4" required></textarea>
+                </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Upload Image:</label>
-                        <input type="file" name="image" class="form-control" accept="image/*" required>
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label">Upload Image:</label>
+                    <input type="file" name="image" class="form-control" accept="image/*" required>
+                </div>
 
-                    <button type="submit" class="btn btn-primary">Submit Blog</button>
+                <button type="submit" class="btn btn-primary">Submit Blog</button>
 
-                </form>
-            </div>
-
-            <div class="text-center mt-3">
-                <a href="/viewblogpage" class="btn btn-secondary">View Blogs</a>
-            </div>
+            </form>
         </div>
+
+        <div class="text-center mt-3">
+            <a href="/viewblogpage" class="btn btn-secondary">View Blogs</a>
+        </div>
+    </div>
 
 
 

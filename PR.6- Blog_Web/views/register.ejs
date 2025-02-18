@@ -44,10 +44,11 @@
             transition: 0.3s;
         }
 
-        .google-btn img{
+        .google-btn img {
             margin-right: 8px;
         }
-        #signUpForm button:hover{
+
+        #signUpForm button:hover {
             color: #d14200 !important;
             transition: 0.3s;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -59,21 +60,34 @@
     <div class="container vh-100 d-flex align-items-center justify-content-center">
         <div class="card shadow-lg signup-card">
             <div class="row g-0">
-                <div class="col-md-12 p-4 form-section" action="/registeruser" method="post">
+                <div class="col-md-12 p-4 form-section">
                     <h2 class="text-center">Sign Up</h2>
-                    <p class="text-center">Already have an account? <a href="/loginuser">Log In</a></p>
+                    <p class="text-center">Already have an account? <a href="/">Log In</a></p>
 
-                    <form id="signUpForm">
+                    <form id="signUpForm" action="/registeruser" method="post">
+
                         <div class="mb-3">
-                            <label for="email" name="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <label for="name"  class="form-label">Name</label>
+                            <input type="name" name="name" class="form-control" id="name" required>
                         </div>
+
                         <div class="mb-3">
-                            <label for="password" name="password" class="form-label">Choose a Password</label>
-                            <input type="password" class="form-control" id="password" required>
+                            <label for="email"  class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" id="email" required>
                         </div>
-                        <button type="submit" class="btn w-40" style="background-color: transparent; color: #000; border:1px solid #000;">Sign Up</button>
+
+                        <div class="mb-3">
+                            <label for="password"  class="form-label">Choose a Password</label>
+                            <input type="password" name="password" class="form-control" id="password" required>
+                        </div>
+
+                        <button type="submit" class="btn w-40"
+                            style="background-color: transparent; color: #000; border:1px solid #000;">
+                            Sign Up
+                        </button>
+
                     </form>
+
                     <div class="text-center ">
                         <p>or</p>
                         <button class="btn btn-light google-btn w-40 mb-3">
@@ -82,17 +96,17 @@
                     </div>
                 </div>
 
-            <!-- Terms -->
-            <div class="text-center small p-3">
-                * By signing up, you agree to our <a href="#">Terms of Use</a> and acknowledge you’ve read our <a
-                    href="#">Privacy Policy</a>.
+                <!-- Terms -->
+                <div class="text-center small p-3">
+                    * By signing up, you agree to our <a href="#">Terms of Use</a> and acknowledge you’ve read our <a
+                        href="#">Privacy Policy</a>.
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="script.js"></script>
 
 </body>
 
