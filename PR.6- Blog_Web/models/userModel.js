@@ -18,6 +18,10 @@ const userSchema = mongoose.Schema({
 const users = mongoose.model("userlogin", userSchema);
 
 const blogSchema = mongoose.Schema({
+    name : {
+        type:String,
+        required : true
+    },
     title: {
         type: String,
         required: true

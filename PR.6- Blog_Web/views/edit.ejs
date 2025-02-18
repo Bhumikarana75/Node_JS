@@ -56,6 +56,10 @@
                 <input type="hidden" name="editId" value="<%= oneRow?.id %>">
 
                 <div class="mb-3">
+                    <label class="form-label">Name:</label>
+                    <input type="text" name="name" class="form-control" value="<%= oneRow?.name %>" required>
+                </div>
+                <div class="mb-3">
                     <label class="form-label">Title:</label>
                     <input type="text" name="title" class="form-control" value="<%= oneRow?.title %>" required>
                 </div>
@@ -68,7 +72,7 @@
                 <div class="mb-3">
                     <label class="form-label">Upload New Image:</label>
                     <input type="file" name="image" class="form-control" accept="image/*">
-                    <img src="<%= oneRow?.image %>" width="100" class="image-preview" alt="Current Image">
+                    <img src="<%= oneRow?.img %>" width="100" class="image-preview" alt="Current Image">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update Blog</button>

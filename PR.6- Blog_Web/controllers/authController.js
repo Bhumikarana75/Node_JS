@@ -13,6 +13,14 @@ const loginPage = (req, res) => {
     return res.render('login');
 }
 
+const contactPage = (req, res) => {
+    return res.render('contact')
+};
+
+const blogView = (req, res) => {
+    return res.render('blog');
+}
+
 const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -59,7 +67,7 @@ const addBlogPage = (req, res) => {
 const viewBlogPage = async (req, res) => {
     try {
         return res.render('view', {
-            allBlogs: await userModel.blogUser.find(),
+            allBlogs: await userModel.blog.find(),
         });
     } catch (err) {
         console.log(err);
@@ -69,19 +77,21 @@ const viewBlogPage = async (req, res) => {
 
 const addBlogData = async (req, res) => {
     try {
-        const { title, description } = req.body;
+        const { name, title, description } = req.body;
+        console.log(name);
         console.log(title);
         console.log(description);
         console.log(req.file);
 
-
-        await userModel.blogUser.create({
+        await userModel.blog.create({
+            name: name,
             title: title,
             description: description,
-            image: req.file?.path
+            img: req.file?.path
         })
         console.log(`Data Successfully added..!`);
         return res.redirect('/viewblogpage');
+
     } catch (err) {
         console.log(err);
         return false;
@@ -90,10 +100,10 @@ const addBlogData = async (req, res) => {
 
 const deleteBlogData = async (req, res) => {
     try {
-        let single = await userModel.blogUser.findById(req.query.delId)
-        fs.unlinkSync(single?.image);
+        let single = await userModel.blog.findById(req.query.delId)
+        fs.unlinkSync(single?.img);
 
-        await userModel.blogUser.findByIdAndDelete(req.query.delId);
+        await userModel.blog.findByIdAndDelete(req.query.delId);
         console.log(`Data Successfully deleted..!`);
         return res.redirect('/viewblogpage');
     } catch (err) {
@@ -104,8 +114,8 @@ const deleteBlogData = async (req, res) => {
 
 const editBlogData = async (req, res) => {
     try {
-        return res.render('editBlog', {
-            oneRow: await userModel.blogUser.findById(req.query.editId)
+        return res.render('edit', {
+            oneRow: await userModel.blog.findById(req.query.editId)
         })
     } catch (err) {
         console.log(err);
@@ -115,23 +125,25 @@ const editBlogData = async (req, res) => {
 
 const updateBlogData = async (req, res) => {
     try {
-        const { editId, title, description } = req.body;
+        const { editId, name, title, description } = req.body;
 
         if (req.file) {
-            let oneRow = await userModel.blogUser.findById(editId);
-            fs.unlinkSync(oneRow?.image);
-            await userModel.blogUser.findByIdAndUpdate(editId, {
+            let oneRow = await userModel.blog.findById(editId);
+            fs.unlinkSync(oneRow?.img);
+            await userModel.blog.findByIdAndUpdate(editId, {
+                name: name,
                 title: title,
                 description: description,
-                image: req.file?.path
+                img: req.file?.path
             })
             console.log("Data Successfully updated..!");
             return res.redirect('/viewblogpage');
         } else {
-            await userModel.blogUser.findByIdAndUpdate(editId, {
+            await userModel.blog.findByIdAndUpdate(editId, {
+                name: name,
                 title: title,
                 description: description,
-                image: req.file?.path
+                img: req.file?.path
             })
             console.log("Data Successfully updated..!");
             return res.redirect('/viewblogpage');
@@ -159,5 +171,7 @@ module.exports = {
     addBlogData,
     deleteBlogData,
     editBlogData,
-    updateBlogData
+    updateBlogData,
+    contactPage,
+    blogView
 }
