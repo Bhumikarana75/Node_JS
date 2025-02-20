@@ -13,11 +13,11 @@ const db = require('./config/db');
 
 // passport authentication start 
 
-const passport = require('passport'); //1
+const passport = require('passport');
 
-const passportLocal = require('./config/passportLocal'); //2
+const passportLocal = require('./config/passportLocal');
 
-const session = require('express-session'); //3
+const session = require('express-session'); 
 
 app.set(passport.setuser);
 

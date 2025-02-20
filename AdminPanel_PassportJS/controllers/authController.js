@@ -1,26 +1,65 @@
 const adminModel = require('../model/adminModel');
 
 const loginPage = (req, res) => {
+    console.log("done");
+    
+    if(res.locals?.users){
+        return res.redirect('/dashboard');
+    }
     return res.render('login');
 }
 
-const registerPage = (req,res) => {
+const registerPage = (req, res) => {
     return res.render('register');
 }
 
-const loginUser = async (req,res) => {
-    try{
-        const { email, password } = req.body;
-        const user = await userModel.users.findOne({ email : email });
+const loginUser = async (req, res) => {
+    try {
         return res.redirect('/dashboard');
-    }catch(err){
+    } catch (err) { 
         console.log(err);
         return false;
     }
 }
 
+const registeruser = async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+
+        await adminModel.create({
+            name: name,
+            email: email,
+            password: password
+        });
+
+        console.log('data registered !');
+        return res.redirect('/')
+
+    } catch (err) {
+        console.log(err);
+        return false;
+    }
+}
+
+const dashPage = (req, res) => {
+    return res.render('dashboard');
+}
+
+const logOutUser = (req,res) => {
+    req.logout((err) => {
+        if(err) {
+            console.log(err);
+            return false;
+        }
+        return res.redirect('/');
+    })
+}
+
 module.exports = {
     loginPage,
     registerPage,
-    loginUser
+    registeruser,
+    dashPage,
+    loginUser,
+    logOutUser
 }

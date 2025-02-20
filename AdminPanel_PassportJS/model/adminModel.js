@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { type } = require('os');
 
 const adminSchema = mongoose.Schema({
     name:{
@@ -13,6 +12,10 @@ const adminSchema = mongoose.Schema({
     password:{
         type: String,
         required: true
+    },
+    role:{
+        type : String,
+        default: "admin"
     }
 });
 
