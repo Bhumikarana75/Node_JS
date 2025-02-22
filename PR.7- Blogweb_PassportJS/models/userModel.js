@@ -13,7 +13,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     }
-})
+});
 
 const users = mongoose.model("userlogin", userSchema);
 
@@ -36,7 +36,7 @@ const blogSchema = mongoose.Schema({
     },
 })
 
-const blog = mongoose.model('blogUser', blogSchema);
+const blog = mongoose.model('blog', blogSchema);
 
 module.exports = { 
     users, 

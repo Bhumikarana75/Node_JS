@@ -7,7 +7,9 @@ const registerPage = (req, res) => {
 }
 
 const loginPage = (req, res) => {
-    if (req.cookies?.auth) {
+    console.log("done");
+    
+    if (res.locals?.users) {
         return res.redirect('/dashboard');
     }
     return res.render('login');
@@ -23,15 +25,6 @@ const blogView = (req, res) => {
 
 const loginUser = async (req, res) => {
     try {
-        const { email, password } = req.body;
-        const user = await userModel.users.findOne({ email: email });
-
-        if (!user || user.password != password) {
-            console.log(`Email Or Password is incorrect`);
-            return res.redirect('/');
-        }
-
-        res.cookie('auth', user);
         return res.redirect('/dashboard');
     } catch (err) {
         console.log(err);
@@ -40,7 +33,7 @@ const loginUser = async (req, res) => {
 }
 
 const registerUser = async (req, res) => {
-    try {
+    try {   
         const { name, email, password } = req.body;
 
         await userModel.users.create({
@@ -48,7 +41,7 @@ const registerUser = async (req, res) => {
             email: email,
             password: password
         });
-        console.log("Data added..!");
+        console.log("Data registered..!");
         return res.redirect('/');
     } catch (err) {
         console.log(err);
@@ -78,10 +71,7 @@ const viewBlogPage = async (req, res) => {
 const addBlogData = async (req, res) => {
     try {
         const { name, title, description } = req.body;
-        console.log(name);
-        console.log(title);
-        console.log(description);
-        console.log(req.file);
+        console.log(req.body);
 
         await userModel.blog.create({
             name: name,
@@ -155,8 +145,14 @@ const updateBlogData = async (req, res) => {
 }
 
 const logoutUser = (req, res) => {
-    res.clearCookie('auth');
+    req.logout((err)=>{
+        if(err){
+            console.log(err);
+            return false;
+        }
     return res.redirect('/');
+
+    })
 }
 
 module.exports = {

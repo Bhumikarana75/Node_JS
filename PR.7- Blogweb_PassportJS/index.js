@@ -6,20 +6,20 @@ const app = express();
 
 const db = require('./config/db');
 
-app.set('view engine', 'ejs');
-
 const path = require('path');
+
+app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); 
 
 // const cookieparser = require('cookie-parser');
 // app.use(cookieparser());
 
 //passpport js :-
 
-const passport = require('passport'); 
+const passport = require('passport');
 const passportLocal = require('./config/passportLocal');
 const session = require('express-session');
 
@@ -29,9 +29,9 @@ app.use(session({
     resave : true,
     saveUninitialized : true,
     cookie : {
-        maxAge : 1000 * 60 * 60 * 24 * 7 
+        maxAge : 1000 * 60 * 60 * 24 
     }
-}))
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -41,7 +41,7 @@ app.use(passport.setUser);
 //passport js end
 
 app.use(express.urlencoded());
-
+ 
 app.use('/', require('./routes/indexRoute'));
 
 app.listen(port, (err) => {
