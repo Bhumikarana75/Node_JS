@@ -1,3 +1,5 @@
+// zxta rvhx cjvn wntx
+
 const adminModel = require('../model/adminModel');
 
 const loginPage = (req, res) => {
@@ -55,11 +57,19 @@ const logOutUser = (req,res) => {
     })
 }
 
+const forgetPassword = (req,res) =>{
+    const {email} = req.body;
+    console.log(req.body);
+    console.log(email);
+    
+}
+
 module.exports = {
     loginPage,
     registerPage,
     registeruser,
     dashPage,
     loginUser,
-    logOutUser
+    logOutUser,
+    forgetPassword
 }
