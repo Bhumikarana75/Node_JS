@@ -25,12 +25,12 @@ const passportLocal = require('./config/passportLocal');
 const session = require('express-session');
 
 app.use(session({
-    name : 'bhumika',
-    secret : 'rnw',
-    resave : true,
-    saveUninitialized : true,
-    cookie : {
-        maxAge : 1000 * 60 * 60 * 24 * 7
+    name: 'bhumika',
+    secret: 'rnw',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }));
 
@@ -40,14 +40,27 @@ app.use(passport.setUser);
 
 //passpport js end
 
-app.use('/', require('./routes/indexRoute'));   
+// to print massage on console :-flash msg start 
+
+const flash = require('connect-flash');
+
+app.use(flash());
+
+app.use('/', (req, res, next) => {
+    res.locals.message = req.flash();
+    return next();
+});
+
+//flash msg end
+
+app.use('/', require('./routes/indexRoute'));
 
 
 app.listen(port, (err) => {
-    if(err){
+    if (err) {
         console.log(err);
         return false;
     }
     console.log(`Server is Running on port: http://localhost:${port}`);
-    
+
 })

@@ -13,7 +13,7 @@ const loginPage = (req, res) => {
         return res.redirect('/dashboard');
     }
     return res.render('login');
-}
+}++++++++++
 
 const contactPage = (req, res) => {
     return res.render('contact')
