@@ -8,7 +8,7 @@ const viewCategoryPage = async (req, res) => {
     try {
         let categories = await categoryModel.find({}); //query for view category
         return res.render('category/view_category',
-            { category: categories } //key
+            { categories : categories } //key
         )
     }
     catch (err) {
@@ -60,9 +60,9 @@ const editCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
     try {
-        const { editid, categoryName } = req.body;
+        const { editid, category } = req.body;
         await categoryModel.findByIdAndUpdate(editid, {
-            category: categoryName
+            category: category
         })
 
         req.flash('success', 'category update successfully');
