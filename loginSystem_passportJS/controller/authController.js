@@ -5,24 +5,17 @@ const registerPage = (req, res) => {
 }
 
 const loginPage = (req, res) => {
-    if (res.cookies?.user) {
+    if (res.locals?.user) {
         return res.redirect('/dashboard');
     }
     return res.render('login');
 }
 
 const loginUser = async (req, res) => {
-    try {
-
-        const { email, password } = req.body;
-        const user = await userModel.findOne({ email: email });
-
-        if (!user || user.password != password) {
-            console.log('Invalid Email or Password');
-            return res.redirect('/');
-        }
-        return res.redirect('/view');
-    } catch (err) {
+    try{
+        console.log(`findOne`);
+        return res.redirect('/dashboard');
+    }catch(err){
         console.log(err);
         return false;
     }
@@ -37,7 +30,7 @@ const registerUser = async (req, res) => {
             email: email,
             password: password
         });
-        console.log("Data added..!");
+        console.log("User Registered..!");
         return res.redirect('/');
 
     } catch (err) {
@@ -89,14 +82,6 @@ const addData = async (req,res) => {
     }
 }
 
-const contactPage = (req, res) => {
-    return res.render('contact');
-}
-
-const aboutPage = (req, res) => {
-    return res.render('about');
-}
-
 const logoutUser = (req, res) => {
     res.clearCookie('auth');
     return res.redirect('/');
@@ -108,8 +93,6 @@ module.exports = {
     loginUser,
     registerUser,
     dashboardPage,
-    contactPage,
-    aboutPage,
     logoutUser,
     addPage,
     viewPage,

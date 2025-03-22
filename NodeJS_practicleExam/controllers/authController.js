@@ -19,13 +19,13 @@ const contactPage = (req, res) => {
     return res.render('contact')
 };
 
-const blogView = (req, res) => {
-    return res.render('blog');
+const productView = (req, res) => {
+    return res.render('product');
 }
 
 const loginUser = async (req, res) => {
     try {
-        return res.redirect('/dashboard');
+        return res.redirect('/viewproductpage');
     } catch (err) {
         console.log(err);
         return false;
@@ -53,14 +53,14 @@ const dashboardPage = (req, res) => {
     return res.render('dashboard');
 }
 
-const addBlogPage = (req, res) => {
+const addproductPage = (req, res) => {
     return res.render('add');
 }
 
-const viewBlogPage = async (req, res) => {
+const viewproductPage = async (req, res) => {
     try {
         return res.render('view', {
-            allBlogs: await userModel.blog.find(),
+            allproducts: await userModel.product.find(),
         });
     } catch (err) {
         console.log(err);
@@ -68,19 +68,19 @@ const viewBlogPage = async (req, res) => {
     }
 }
 
-const addBlogData = async (req, res) => {
+const addproductData = async (req, res) => {
     try {
         const { name, title, description } = req.body;
         console.log(req.body);
 
-        await userModel.blog.create({
+        await userModel.product.create({
             name: name,
             title: title,
             description: description,
             img: req.file?.path
         })
         console.log(`Data Successfully added..!`);
-        return res.redirect('/viewblogpage');
+        return res.redirect('/viewproductpage');
 
     } catch (err) {
         console.log(err);
@@ -88,24 +88,24 @@ const addBlogData = async (req, res) => {
     }
 }
 
-const deleteBlogData = async (req, res) => {
+const deleteproductData = async (req, res) => {
     try {
-        let single = await userModel.blog.findById(req.query.delId)
+        let single = await userModel.product.findById(req.query.delId)
         fs.unlinkSync(single?.img);
 
-        await userModel.blog.findByIdAndDelete(req.query.delId);
+        await userModel.product.findByIdAndDelete(req.query.delId);
         console.log(`Data Successfully deleted..!`);
-        return res.redirect('/viewblogpage');
+        return res.redirect('/viewproductpage');
     } catch (err) {
         console.log(err);
         return false;
     }
 }
 
-const editBlogData = async (req, res) => {
+const editproductData = async (req, res) => {
     try {
         return res.render('edit', {
-            oneRow: await userModel.blog.findById(req.query.editId)
+            oneRow: await userModel.product.findById(req.query.editId)
         })
     } catch (err) {
         console.log(err);
@@ -113,30 +113,30 @@ const editBlogData = async (req, res) => {
     }
 }
 
-const updateBlogData = async (req, res) => {
+const updateproductData = async (req, res) => {
     try {
         const { editId, name, title, description } = req.body;
 
         if (req.file) {
-            let oneRow = await userModel.blog.findById(editId);
+            let oneRow = await userModel.product.findById(editId);
             fs.unlinkSync(oneRow?.img);
-            await userModel.blog.findByIdAndUpdate(editId, {
+            await userModel.product.findByIdAndUpdate(editId, {
                 name: name,
                 title: title,
                 description: description,
                 img: req.file?.path
             })
             console.log("Data Successfully updated..!");
-            return res.redirect('/viewblogpage');
+            return res.redirect('/viewproductpage');
         } else {
-            await userModel.blog.findByIdAndUpdate(editId, {
+            await userModel.product.findByIdAndUpdate(editId, {
                 name: name,
                 title: title,
                 description: description,
                 img: req.file?.path
             })
             console.log("Data Successfully updated..!");
-            return res.redirect('/viewblogpage');
+            return res.redirect('/viewproductpage');
         }
     } catch (err) {
         console.log(err);
@@ -162,12 +162,12 @@ module.exports = {
     registerUser,
     dashboardPage,
     logoutUser,
-    addBlogPage,
-    viewBlogPage,
-    addBlogData,
-    deleteBlogData,
-    editBlogData,
-    updateBlogData,
+    addproductPage,
+    viewproductPage,
+    addproductData,
+    deleteproductData,
+    editproductData,
+    updateproductData,
     contactPage,
-    blogView
+    productView
 }

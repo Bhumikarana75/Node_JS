@@ -4,30 +4,32 @@ const port = 8080;
 
 const app = express();
 
+const db = require('./config/db');
+
+const path = require('path');
+
 app.set('view engine', 'ejs');
 
-const db = require('./config/db');
+app.use(express.static('public'));
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); 
 
 // const cookieparser = require('cookie-parser');
 // app.use(cookieparser());
 
-// passport authentication start 
+//passpport js :-
 
 const passport = require('passport');
-
 const passportLocal = require('./config/passportLocal');
-
-const session = require('express-session'); 
-
-app.set(passport.setuser);
+const session = require('express-session');
 
 app.use(session({
-    name: 'bhumika',
-    secret: 'rnw',
-    saveUninitialized: true,
-    resave: true,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24
+    name : 'bhumika',
+    secret : 'rnw',
+    resave : true,
+    saveUninitialized : true,
+    cookie : {
+        maxAge : 1000 * 60 * 60 * 24 
     }
 }));
 
@@ -36,10 +38,10 @@ app.use(passport.session());
 app.use(passport.setUser);
 
 
-// passport authentication end 
+//passport js end
 
 app.use(express.urlencoded());
-
+ 
 app.use('/', require('./routes/indexRoute'));
 
 app.listen(port, (err) => {
@@ -48,4 +50,4 @@ app.listen(port, (err) => {
         return false;
     }
     console.log(`Server is running on port :- http://localhost:${port}`);
-});
+})
